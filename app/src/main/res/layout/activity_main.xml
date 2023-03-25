@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="388dp"
+        android:layout_height="229dp"
+        android:layout_above="@+id/task_list"
+        android:layout_marginBottom="1dp"
+        android:padding="3dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/battery_status_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="Battery Status: \n"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/battery_consumption_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="Battery Consumption:\n "
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/battery_info_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="Battery Information:\n "
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/battery_info"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:text="Run Duration:\t"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/task_list"
+        android:layout_width="wrap_content"
+        android:layout_height="369dp"
+        android:layout_above="@+id/start_button"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="54dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp" />
+
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:onClick="onStartButtonClick"
+        android:text="Start" />
+
+    <Button
+        android:id="@+id/stop_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="Stop" />
+
+</RelativeLayout>
