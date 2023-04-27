@@ -38,7 +38,6 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST_CODE = 1000;
-    private boolean buttonClicked = false;
     private Timer mTimer;
 
     private static final int BATTERY_SAMPLE_INTERVAL_MS = 1000 * 60 * 60; // 1 hour
@@ -147,10 +146,8 @@ public class MainActivity extends AppCompatActivity {
 
             // Show progress bar
             ProgressBar progressBar = findViewById(R.id.progress_bar);
-//            if (buttonClicked)
-                progressBar.setVisibility(View.VISIBLE);
-
-//            progressBar.setMax(Integer.MAX_VALUE);
+            progressBar.setVisibility(View.VISIBLE);
+            progressBar.setMax(Integer.MAX_VALUE);
 
             double x = 1.0;
 
@@ -291,7 +288,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onStartButtonClick(View v)
     {
-        buttonClicked = true;
         mHandler.postDelayed(mBatterySampleRunnable, 0);
     }
     @Override
