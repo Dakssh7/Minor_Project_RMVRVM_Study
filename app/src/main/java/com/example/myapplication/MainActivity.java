@@ -49,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
     private  TextView mRunDuration;
 
-    private ListView mTaskList;
+    private TextView mcount_of_iterations;
+
+//    private ListView mTaskList;
     private TextView mBatteryConsumptionTextView;
     private int mStartBatteryLevel;
     private int mEndBatteryLevel;
@@ -65,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        startButton = findViewById(R.id.start_button);
+        mcount_of_iterations = findViewById(R.id.count_of_iterations);
         mRunDuration = findViewById(R.id.run_duration_text_view);
-        mTaskList = findViewById(R.id.task_list);
+//        mTaskList = findViewById(R.id.task_list);
         mBatteryStatusTextView = findViewById(R.id.battery_status_text_view);
         mBatteryInfoTextView = findViewById(R.id.battery_info_text_view);
         mBatteryConsumptionTextView = findViewById(R.id.battery_consumption_text_view);
@@ -93,19 +95,15 @@ public class MainActivity extends AppCompatActivity {
             mStartBatteryLevel = currentBatteryLevel;
             mStartTime = System.currentTimeMillis();
 
-//            ArrayList<String> resultList = new ArrayList<>();
-            double x = 1.0; // initial value of x
+            double x = 1.0;
 
             for (int i = 0; i < Integer.MAX_VALUE; i++) {
-                x = Math.tan(Math.atan(x)); // apply the load function
-//                resultList.add(Double.toString(i+1));
+                x = Math.tan(Math.atan(x)); // applying the load function
             }
 
-//            ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, resultList);
-//            mTaskList.setAdapter(adapter)
-
-            // Stop battery sample timer
-//            mHandler.removeCallbacks(this);
+            // Show count_of_iterations to the screen
+            String countsString = "Load function ran for : " + Integer.MAX_VALUE + " number of times\n";
+            mcount_of_iterations.setText(countsString);
 
             // Get current battery level
             currentBatteryLevel = getBatteryLevel();
@@ -134,8 +132,7 @@ public class MainActivity extends AppCompatActivity {
             // update run duration text view
             String runDuration = "Run Duration: " + timeDifferenceMs / (1000.0) + " seconds";
             mRunDuration.setText(runDuration);
-            // Start battery sample timer again
-//            mHandler.postDelayed(this, BATTERY_SAMPLE_INTERVAL_MS);
+
 
         }
     };
@@ -145,11 +142,7 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver mBatteryLevelReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-//            int currentBatteryLevel = getBatteryLevel();
-//
-//            // Update start battery level and start time
-//            mStartBatteryLevel = currentBatteryLevel;
-//            mStartTime = System.currentTimeMillis();
+
 
         }
     };
@@ -234,37 +227,7 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case PERMISSIONS_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    // Permission granted, get battery info and update text view
-//                    String batteryStatus = "Battery status: " + getBatteryStatus();
-//                    mBatteryStatusTextView.setText(batteryStatus);
-//
-//                    String batteryInfo = "Battery info: " + getBatteryInfo();
-//                    mBatteryInfoTextView.setText(batteryInfo);
-//
-//                    // Start task and register broadcast receiver
-//                    registerReceiver(mBatteryLevelReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-//                    mTimer = new Timer();
-//                    mTimer.schedule(new TimerTask() {
-//                        @Override
-//                        public void run() {
-//                            // Update end battery level and end time
-//                            int currentBatteryLevel = getBatteryLevel();
-//                            mEndBatteryLevel = currentBatteryLevel;
-//                            mEndTime = System.currentTimeMillis();
-//
-//                            // Calculate battery consumption per hour and update text view
-//                            float batteryConsumption = (float) (mStartBatteryLevel - mEndBatteryLevel) / (mEndTime - mStartTime) * 60 * 60;
-//                            String batteryConsumptionText = "Battery consumption per hour: " + batteryConsumption + "%";
-//                            mBatteryConsumptionTextView.setText(batteryConsumptionText);
-//
-//                            // Unregister broadcast receiver and cancel timer
-//                            unregisterReceiver(mBatteryLevelReceiver);
-//                            mTimer.cancel();
-//                        }
-//
-//                        private void unregisterReceiver(BroadcastReceiver mBatteryLevelReceiver) {
-//                        }
-//                    }, TASK_DURATION_MS, TASK_DURATION_MS);
+
                 } else {
                     // Permission not granted, show message and finish activity
                     Toast.makeText(this, "Permission denied, cannot run task", Toast.LENGTH_SHORT).show();
