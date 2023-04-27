@@ -8,10 +8,14 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="378dp"
-        android:layout_height="435dp"
+        android:layout_width="395dp"
+        android:id="@+id/linear_layout"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/start_button"
-        android:layout_marginBottom="98dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="111dp"
+        android:layout_centerHorizontal="true"
         android:orientation="vertical"
         android:padding="5dp">
 
@@ -54,18 +58,31 @@
             android:layout_alignParentTop="true"
             android:text="Run Duration:\t"
             android:textSize="16sp" />
+
     </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/start_button"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="60dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/start_button"
-        android:layout_width="117dp"
-        android:layout_height="66dp"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="163dp"
-        android:layout_marginEnd="147dp"
-        android:layout_marginBottom="142dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="149dp"
+        android:layout_marginBottom="199dp"
         android:onClick="onStartButtonClick"
         android:text="Start" />
 

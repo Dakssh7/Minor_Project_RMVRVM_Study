@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +38,7 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST_CODE = 1000;
-
+    private boolean buttonClicked = false;
     private Timer mTimer;
 
     private static final int BATTERY_SAMPLE_INTERVAL_MS = 1000 * 60 * 60; // 1 hour
@@ -88,6 +89,55 @@ public class MainActivity extends AppCompatActivity {
         mHandler.postDelayed(mBatterySampleRunnable, BATTERY_SAMPLE_INTERVAL_MS);
     }
 
+//    private Runnable mBatterySampleRunnable = new Runnable() {
+//        @Override
+//        public void run() {
+//            int currentBatteryLevel = getBatteryLevel();
+//            mStartBatteryLevel = currentBatteryLevel;
+//            mStartTime = System.currentTimeMillis();
+//
+//            double x = 1.0;
+//
+//            for (int i = 0; i < Integer.MAX_VALUE; i++) {
+//                x = Math.tan(Math.atan(x)); // applying the load function
+//            }
+//
+//            // Show count_of_iterations to the screen
+//            String countsString = "Load function ran for : " + Integer.MAX_VALUE + " number of times\n";
+//            mcount_of_iterations.setText(countsString);
+//
+//            // Get current battery level
+//            currentBatteryLevel = getBatteryLevel();
+//
+//            // Update end battery level and end time
+//            mEndBatteryLevel = currentBatteryLevel;
+//            mEndTime = System.currentTimeMillis();
+//
+//            // Update battery status text view
+//            String batteryStatus = "Battery status: " + getBatteryStatus() + "\t(" + currentBatteryLevel + "%)";
+//            mBatteryStatusTextView.setText(batteryStatus);
+//
+//            // Calculate battery consumption per hour
+//            long timeDifferenceMs = mEndTime - mStartTime;
+//            int batteryDifference = mStartBatteryLevel - mEndBatteryLevel;
+//            double batteryConsumptionPerHour = (double) batteryDifference / (timeDifferenceMs / (1000 * 60 * 60.0));
+//            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+//            String batteryConsumption = "Battery Difference: "+ batteryDifference + "% \nTime Duration: " +timeDifferenceMs + "ms \nBattery consumption per hour: " + decimalFormat.format(batteryConsumptionPerHour) + "%";
+//            mBatteryConsumptionTextView.setText(batteryConsumption);
+//
+//
+//            // Update battery info text view
+//            String batteryInfo = "current Battery Level: "+currentBatteryLevel + "%\n" + "Battery information: " + getBatteryInfo();
+//            mBatteryInfoTextView.setText(batteryInfo);
+//
+//            // update run duration text view
+//            String runDuration = "Run Duration: " + timeDifferenceMs / (1000.0) + " seconds";
+//            mRunDuration.setText(runDuration);
+//
+//
+//        }
+//    };
+
     private Runnable mBatterySampleRunnable = new Runnable() {
         @Override
         public void run() {
@@ -95,11 +145,35 @@ public class MainActivity extends AppCompatActivity {
             mStartBatteryLevel = currentBatteryLevel;
             mStartTime = System.currentTimeMillis();
 
+            // Show progress bar
+            ProgressBar progressBar = findViewById(R.id.progress_bar);
+//            if (buttonClicked)
+                progressBar.setVisibility(View.VISIBLE);
+
+//            progressBar.setMax(Integer.MAX_VALUE);
+
             double x = 1.0;
 
-            for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            for (int i = 0; i < 1e4; i++) {
                 x = Math.tan(Math.atan(x)); // applying the load function
+
+                // Update progress bar
+                final int progress = i;
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBar.setProgress(progress);
+                    }
+                });
             }
+
+            // Hide progress bar
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    progressBar.setVisibility(View.GONE);
+                }
+            });
 
             // Show count_of_iterations to the screen
             String countsString = "Load function ran for : " + Integer.MAX_VALUE + " number of times\n";
@@ -132,8 +206,6 @@ public class MainActivity extends AppCompatActivity {
             // update run duration text view
             String runDuration = "Run Duration: " + timeDifferenceMs / (1000.0) + " seconds";
             mRunDuration.setText(runDuration);
-
-
         }
     };
 
@@ -219,6 +291,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onStartButtonClick(View v)
     {
+        buttonClicked = true;
         mHandler.postDelayed(mBatterySampleRunnable, 0);
     }
     @Override
