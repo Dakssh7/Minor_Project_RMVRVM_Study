@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
             double x = 1.0;
 
-            for (int i = 0; i < 1e4; i++) {
+            for (int i = 0; i < Integer.MAX_VALUE; i++) {
                 x = Math.tan(Math.atan(x)); // applying the load function
 
                 // Update progress bar
