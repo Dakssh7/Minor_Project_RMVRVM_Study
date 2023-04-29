@@ -8,14 +8,14 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="395dp"
         android:id="@+id/linear_layout"
-        android:layout_height="wrap_content"
+        android:layout_width="358dp"
+        android:layout_height="366dp"
         android:layout_above="@+id/start_button"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="52dp"
-        android:layout_marginBottom="111dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical"
         android:padding="5dp">
 
@@ -23,7 +23,6 @@
             android:id="@+id/count_of_iterations"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_alignParentTop="true"
             android:text="Run Duration:\t"
             android:textSize="16sp" />
 
@@ -31,7 +30,6 @@
             android:id="@+id/battery_status_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:text="Battery Status: \n"
             android:textSize="16sp" />
 
@@ -39,7 +37,6 @@
             android:id="@+id/battery_consumption_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:text="Battery Consumption:\n "
             android:textSize="16sp" />
 
@@ -47,7 +44,6 @@
             android:id="@+id/battery_info_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:text="Battery Information:\n "
             android:textSize="16sp" />
 
@@ -55,7 +51,6 @@
             android:id="@+id/run_duration_text_view"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_alignParentTop="true"
             android:text="Run Duration:\t"
             android:textSize="16sp" />
 
@@ -74,15 +69,11 @@
 
     <Button
         android:id="@+id/start_button"
-        android:layout_width="128dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="149dp"
-        android:layout_marginBottom="199dp"
+        android:layout_marginBottom="123dp"
         android:onClick="onStartButtonClick"
         android:text="Start" />
 
